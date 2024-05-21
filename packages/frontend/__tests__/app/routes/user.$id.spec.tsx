@@ -1,5 +1,6 @@
-import { loader } from './user.$id';
+import { loader } from '../../../app/routes/user.$id';
 import { Request } from 'node-fetch';
+import fetchMock from 'jest-fetch-mock';
 
 describe('loader function', () => {
   beforeEach(() => {

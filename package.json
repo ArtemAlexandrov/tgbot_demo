@@ -6,10 +6,10 @@
   ],
   "scripts": {
     "dev:mock_config": "cp .env.example .env",
-    "start": "run-p start:proxy start:stand",
+    "start": "run-s start:proxy start:stand",
     "prestart:proxy": "docker-compose --profile=dev-only up ngrok -d",
     "start:proxy": "./update_dev_public_url.sh",
-    "poststart:proxy": "docker-compose down ngrok",
+    "poststart": "docker-compose down ngrok",
     "start:stand": "docker-compose up"
   },
   "devDependencies": {
