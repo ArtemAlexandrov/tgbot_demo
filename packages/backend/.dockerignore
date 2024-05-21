@@ -1,0 +1,14 @@
+# Ignore node modules
+node_modules
+
+# Ignore logs
+*.log
+
+# Ignore .git directory
+.git/
+
+# Set environment variables in dockerfile
+.env
+
+# Ignore other unnecessary files
+*.md

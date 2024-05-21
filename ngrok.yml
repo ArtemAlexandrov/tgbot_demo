@@ -1,0 +1,7 @@
+version: 2
+console_ui: true
+log_level: debug
+tunnels:
+  website:
+    proto: http
+    addr: http://nginx:80

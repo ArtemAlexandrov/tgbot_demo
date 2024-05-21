@@ -1,0 +1,27 @@
+@startuml
+package "NestJS Backend" {
+    node "NestJS Application" as NestApp
+    database "PostgreSQL" as Postgres
+
+    NestApp --> Postgres : uses
+    note left of NestApp : exposes /api/user/$id
+}
+
+package "Web App" {
+    node "Remix Application" as RemixApp
+    node "NGINX" as Nginx
+
+    RemixApp -up-> Nginx : wrapped by
+    RemixApp --> NestApp : calls API\nvia fetch\nusing user id
+}
+
+cloud "Ngrok" {
+    Ngrok --> Nginx: forwards public URL
+    Ngrok ..> NestApp : provides public url
+}
+
+cloud "Telegram" {
+    Telegram -left-> NestApp : interacts via\nnode-telegram-bot-api
+    Telegram --> Ngrok : Opens web app
+}
+@enduml
