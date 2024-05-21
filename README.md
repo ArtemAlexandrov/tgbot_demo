@@ -1,8 +1,12 @@
 # TL;DR
 ```shell
+# Install docker and yarn
 yarn dev:mock_config
 # Edit .env file to set your telegram bot token and ngrok authtoken
 yarn start
+# Play with the bot ...
+yarn cleanup
+# You are great!
 ```
 # Telegram bot
 
@@ -105,9 +109,22 @@ Check the `frontend` and `backend` packages readme for more information.
 - Ngrok: Public url for local development. It's a good choice for the development of the Telegram bot, because you need to have public https to run your web apps.
 - Nginx: It's a good choice to serve the frontend application. It's fast and easy to configure. In the future, you can add more configurations to the nginx server to serve the frontend application.
 - Mono-repo: It's a good choice to develop the project in a single repository. It's easy to manage the project and share the code between the packages.
+- yarn: Hipster style package manager, absolutely no arguments here.
 
 ## Things to do
 - Typing safety API between nest and remix. It might be graphql or tRPC.
 - Use telegram css vars for the frontend.
 - Maybe move database storage to another package if it will be used in other packages.
 - Add some CI linting and testing.
+
+
+## Remove artefacts
+
+If you want to remove the artefacts, follow these steps:
+
+```shell
+yarn cleanup
+```
+
+## Contact
+https://t.me/ArtemAlexandrov
