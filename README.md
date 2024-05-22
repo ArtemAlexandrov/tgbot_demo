@@ -20,7 +20,7 @@ It is mono-repo project that contains the following packages:
 
 ## Supported telegram commands
 - `/start` - Start the chat with the bot.
-- `/adminhello <telegramUserId> <message>` - Get help message.
+- `/adminhello <telegramUserId> <message>` - Send message to user. For admins only
 
 ### Additional Features
 DEV MODE ONLY
