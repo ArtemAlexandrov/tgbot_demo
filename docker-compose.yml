@@ -9,22 +9,22 @@ services:
       POSTGRES_DB: DEV_DATABASE
     volumes:
       - postgres-data:/var/lib/postgresql/data
-  ngrok:
-    profiles:
-      - dev-only
-    image: ngrok/ngrok:alpine
-    env_file:
-      - .env
-    environment:
-      - NGROK_AUTHTOKEN
-    volumes:
-      - ./ngrok.yml:/etc/ngrok.yml
-    command:
-      - "start"
-      - "--all"
-      - "--config=/etc/ngrok.yml"
-    ports:
-      - "4040:4040"
+#  ngrok:
+#    profiles:
+#      - dev-only
+#    image: ngrok/ngrok:alpine
+#    env_file:
+#      - .env
+#    environment:
+#      - NGROK_AUTHTOKEN
+#    volumes:
+#      - ./ngrok.yml:/etc/ngrok.yml
+#    command:
+#      - "start"
+#      - "--all"
+#      - "--config=/etc/ngrok.yml"
+#    ports:
+#      - "4040:4040"
   nest:
     image: node:22-alpine3.19
     env_file:
@@ -42,25 +42,25 @@ services:
     command: sh -c "yarn install && yarn prisma migrate deploy && yarn prisma generate && yarn run build && yarn run start:prod"
     depends_on:
       - postgres
-  remix:
-    image: node:22-alpine3.19
-    working_dir: /app
-    environment:
-      - API_URL=http://nest:3000
-    volumes:
-      - ./packages/frontend:/app
-    command: sh -c "yarn install && yarn run build && yarn run start"
-    depends_on:
-      - nest
-  nginx:
-    image: nginx:1.21.6
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "80:80"
-    depends_on:
-      - nest
-      - remix
+#  remix:
+#    image: node:22-alpine3.19
+#    working_dir: /app
+#    environment:
+#      - API_URL=http://nest:3000
+#    volumes:
+#      - ./packages/frontend:/app
+#    command: sh -c "yarn install && yarn run build && yarn run start"
+#    depends_on:
+#      - nest
+#  nginx:
+#    image: nginx:1.21.6
+#    volumes:
+#      - ./nginx.conf:/etc/nginx/nginx.conf
+#    ports:
+#      - "80:80"
+#    depends_on:
+#      - nest
+#      - remix
 
 volumes:
   postgres-data:

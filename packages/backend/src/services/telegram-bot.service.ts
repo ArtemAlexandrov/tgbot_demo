@@ -58,24 +58,15 @@ export class TelegramBotService implements OnModuleInit, OnModuleDestroy {
 
   private initStartHandler() {
     this.bot.onText(/\/start/, async (msg) => {
-      const {
-        id: telegramId,
-        first_name: firstName,
-        last_name: lastName,
-      } = msg.chat;
-      const user = await this.userService.upsertUser({
-        telegramId,
-        firstName,
-        lastName,
-      });
-      await this.sendMessage(user.telegramId, `Hello, ${user.firstName}!`, {
+      const telegramId = msg.chat.id;
+      await this.sendMessage(telegramId, `Hello!`, {
         reply_markup: {
           inline_keyboard: [
             [
               {
-                text: 'Hello!',
+                text: 'PUSH ME!',
                 web_app: {
-                  url: `${process.env.PUBLIC_URL}/user/${user.id}`,
+                  url: `${process.env.PUBLIC_URL}`,
                 },
               },
             ],
